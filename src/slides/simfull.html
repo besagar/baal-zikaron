@@ -26,14 +26,14 @@ for(i=0;i<40;i++)F.push({v:null,ph:6,p:[0,0],m:0});
 for(i=0;i<330;i++)F.push({v:null,ph:6,p:[0,0],m:0,sh:1});
 for(i=0;i<90;i++)F.push({v:null,ph:7,p:[0,0],m:i/90,fd:1-i/90});
 var NM=['','1 · у входа: клетка жива, память есть','2 · первый проход: с памятью','3 · предбанник: рука ещё помнит','3 · изъятие памяти','4 · второй проход: без памяти','5 · чек: разница — результат работы памяти','6 · сброс'];
-var O=[330,330],S=180,Q=[1180,370],U=1300;
+var O=[330,370],S=165,Q=[1180,370],U=1300;
 var hc=document.createElement('canvas');hc.width=hc.height=10;var hx=hc.getContext('2d');hx.strokeStyle='rgba(110,159,216,0.55)';hx.lineWidth=2;hx.beginPath();hx.moveTo(0,10);hx.lineTo(10,0);hx.stroke();var HP=X.createPattern(hc,'repeat');
 function trace(ph,a,col,w){X.strokeStyle=col;X.lineWidth=w;X.beginPath();var st=0;for(var j=0;j<=a&&j<F.length;j++){var f=F[j];if(f.ph==ph||(ph==2&&f.ph==3)){var x=Q[0]+f.p[0]*U,y=Q[1]-f.p[1]*U;if(!st){X.moveTo(x,y);st=1}else X.lineTo(x,y)}}X.stroke()}
 var k=0,t0=performance.now();
 function draw(){var t=(performance.now()-t0)/1000,f=F[Math.floor(k)];X.fillStyle='#111316';X.fillRect(0,0,1664,700);
-X.strokeStyle='#4A4640';X.lineWidth=5;X.beginPath();X.arc(O[0],O[1],270,h+0.34,h-0.34+2*Math.PI);X.stroke();
-X.beginPath();X.moveTo(O[0]-90,584);X.lineTo(O[0]-90,700);X.moveTo(O[0]+90,584);X.lineTo(O[0]+90,700);X.stroke();
-X.fillStyle='#1B1E23';X.beginPath();X.arc(O[0],O[1],90,0,7);X.fill();
+X.strokeStyle='#4A4640';X.lineWidth=5;X.beginPath();X.arc(O[0],O[1],247.5,h+0.34,h-0.34+2*Math.PI);X.stroke();
+X.beginPath();X.moveTo(O[0]-82.5,603);X.lineTo(O[0]-82.5,700);X.moveTo(O[0]+82.5,603);X.lineTo(O[0]+82.5,700);X.stroke();
+X.fillStyle='#1B1E23';X.beginPath();X.arc(O[0],O[1],82.5,0,7);X.fill();
 var gl=f.m*(0.55+0.15*Math.sin(t*6.3)+0.1*Math.sin(t*13.1));if(f.ph>=5&&f.ph<7)gl=0.1;
 var rg=X.createRadialGradient(O[0],O[1],4,O[0],O[1],120);rg.addColorStop(0,'rgba(242,178,82,'+gl+')');rg.addColorStop(1,'rgba(242,178,82,0)');X.fillStyle=rg;X.beginPath();X.arc(O[0],O[1],120,0,7);X.fill();
 if(f.v){var vx=O[0]+f.v[0]*S,vy=O[1]-f.v[1]*S;X.setLineDash([5,7]);X.strokeStyle='#6A655D';X.lineWidth=1.5;X.beginPath();X.moveTo(O[0],O[1]);X.lineTo(vx,vy);X.stroke();X.setLineDash([]);X.fillStyle='#ECE8E1';X.beginPath();X.arc(vx,vy,14,0,7);X.fill()}
@@ -46,7 +46,7 @@ if(f.sh||f.fd!==undefined){X.fillStyle=HP;X.beginPath();X.arc(Q[0],Q[1],R*U,0,7)
 trace(2,Math.floor(k),'#F2B252',4);trace(5,Math.floor(k),'#6E9FD8',4);X.globalAlpha=1;
 if(f.ph<7){X.fillStyle=f.ph>=5?'#6E9FD8':'#F2B252';X.beginPath();X.arc(Q[0]+f.p[0]*U,Q[1]-f.p[1]*U,8,0,7);X.fill()}
 X.font='500 30px system-ui,sans-serif';X.fillStyle=f.ph>=5&&f.ph<6?'#6E9FD8':'#F2B252';X.fillText(NM[f.ph],24,44);
-X.font='24px system-ui,sans-serif';X.fillStyle='#8E887E';X.fillText('вид сверху · рука ×3',24,688);X.fillText('плоскость поляризации p · увеличено',900,44);
+X.font='24px system-ui,sans-serif';X.fillStyle='#8E887E';X.fillText('вид сверху · рука ×3',24,82);X.fillText('плоскость поляризации p · увеличено',900,44);
 X.fillStyle='#F2B252';X.fillRect(1380,640,40,5);X.fillStyle='#B5AFA4';X.fillText('с памятью',1430,650);X.fillStyle='#6E9FD8';X.fillRect(1380,676,40,5);X.fillStyle='#B5AFA4';X.fillText('без памяти',1430,686);
 k+=1.5;if(k>=F.length)k=0;requestAnimationFrame(draw)}
 draw();
