@@ -1,0 +1,39 @@
+<section id="light" data-transition="fade" style="background:#111316;color:#ECE8E1;font-family:'IBM Plex Sans', Arial, sans-serif;padding:96px 128px;display:flex;flex-direction:column;gap:16px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:#F2B252;letter-spacing:2px;text-transform:uppercase">05 · Железо</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:500;line-height:1.1;color:#ECE8E1">Свет: мрак и точечные источники</h2>
+<svg aria-label="План со светом: в тёмном коридоре пятно света на кукле, в тёмном зале пятно на подиуме с клеткой и янтарное свечение клетки; слабая подсветка вдоль стен и пола" width="520" height="620" viewBox="0 0 520 620" style="position:absolute;left:128px;top:280px;width:520px;height:620px">
+<defs>
+<radialGradient id="sp" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#ECE8E1" stop-opacity="0.55"/><stop offset="1" stop-color="#ECE8E1" stop-opacity="0"/></radialGradient>
+<radialGradient id="led" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#F2B252" stop-opacity="0.95"/><stop offset="1" stop-color="#F2B252" stop-opacity="0"/></radialGradient>
+</defs>
+<rect x="0" y="0" width="520" height="620" fill="#0B0C0E"/>
+<path d="M205 345.6 A165 165 0 1 1 315 345.6" fill="none" stroke="#2A2D33" stroke-width="6"/>
+<line x1="205" y1="345" x2="205" y2="620" stroke="#2A2D33" stroke-width="6"/>
+<line x1="315" y1="345" x2="315" y2="620" stroke="#2A2D33" stroke-width="6"/>
+<path d="M212 338 A155 155 0 1 1 308 338" fill="none" stroke="#6E9FD8" stroke-opacity="0.45" stroke-width="2" stroke-dasharray="4 8"/>
+<line x1="213" y1="350" x2="213" y2="620" stroke="#6E9FD8" stroke-opacity="0.45" stroke-width="2" stroke-dasharray="4 8"/>
+<line x1="307" y1="350" x2="307" y2="620" stroke="#6E9FD8" stroke-opacity="0.45" stroke-width="2" stroke-dasharray="4 8"/>
+<circle cx="260" cy="190" r="90" fill="url(#sp)"/>
+<circle cx="260" cy="190" r="55" fill="#1B1E23" fill-opacity="0.7"/>
+<circle cx="260" cy="190" r="34" fill="url(#led)"/>
+<circle cx="260" cy="190" r="10" fill="#ECE8E1"/>
+<circle cx="260" cy="480" r="60" fill="url(#sp)"/>
+<circle cx="260" cy="472" r="7" fill="#D9D3C8"/>
+<line x1="260" y1="480" x2="260" y2="502" stroke="#D9D3C8" stroke-width="6"/>
+</svg>
+<table style="position:absolute;left:700px;top:280px;width:1092px;font-size:24px;color:#B5AFA4">
+<tr><th style="width:17%;text-align:left;color:#F2B252">Шаг</th><th style="width:27%;text-align:left;color:#F2B252">Кукла</th><th style="width:12%;text-align:left;color:#F2B252">Подиум</th><th style="width:29%;text-align:left;color:#F2B252">Клетка изнутри</th><th style="width:15%;text-align:left;color:#F2B252">Пол</th></tr>
+<tr><td>0 · коридор</td><td>луч → гаснет в конце</td><td>—</td><td>мерцание</td><td>слабо</td></tr>
+<tr><td>1 · у входа</td><td>—</td><td>луч</td><td>мерцание + дыхание</td><td>слабо</td></tr>
+<tr><td>2 · проход</td><td>—</td><td>луч</td><td>мерцание + дыхание</td><td>слабо</td></tr>
+<tr><td>3 · предбанник</td><td>—</td><td>луч</td><td>гаснет / тусклое</td><td>слабо</td></tr>
+<tr><td>4 · проход</td><td>—</td><td>луч ?</td><td>тусклое постоянное</td><td>слабо</td></tr>
+<tr><td>5–6 · сброс</td><td>луч (кукла собрана)</td><td>луч ?</td><td>мерцание вернулось</td><td>слабо</td></tr>
+</table>
+<div style="position:absolute;left:700px;top:700px;width:1092px;display:flex;flex-direction:column;gap:14px">
+<p style="font-size:24px;line-height:1.45;color:#B5AFA4"><span style="color:#ECE8E1">Переход.</span> Луч на подиум загорается в тот момент, когда гаснет луч на куклу: «тулово» перемещается на стол.</p>
+<p style="font-size:24px;line-height:1.45;color:#B5AFA4"><span style="color:#ECE8E1">Открытый вопрос:</span> меняется ли общий свет при изъятии памяти или только свет внутри клетки (знак «?»).</p>
+<p style="font-size:24px;line-height:1.45;color:#B5AFA4"><span style="color:#ECE8E1">Безопасность:</span> слабая подсветка пола или контура стен; галерея может требовать указатели выхода. Лидару темнота не мешает.</p>
+</div>
+<aside>Луч на куклу — узкий прожектор; если нужно, чтобы свет был ровно по силуэту, — профильный прожектор (framing spot). В темноте мерцания изнутри клетки может хватить, и луч на подиум нужен совсем слабый.</aside>
+</section>

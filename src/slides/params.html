@@ -1,0 +1,24 @@
+<section id="params" data-transition="fade" style="background:#111316;color:#ECE8E1;font-family:'IBM Plex Sans', Arial, sans-serif;padding:96px 128px;display:flex;flex-direction:column;gap:16px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:#F2B252;letter-spacing:2px;text-transform:uppercase">04 · Модель</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:500;line-height:1.1;color:#ECE8E1">Параметры примера — иллюстративно</h2>
+<table style="position:absolute;left:128px;top:280px;width:1000px;font-size:26px;color:#B5AFA4">
+<tr><th style="width:14%;text-align:left;color:#8E887E">символ</th><th style="width:34%;text-align:left;color:#8E887E">значение</th><th style="width:52%;text-align:left;color:#8E887E">смысл</th></tr>
+<tr><td>λ</td><td>0.1 м</td><td>спад сигнала ℓ(r) = exp(−r/λ)</td></tr>
+<tr><td>τ</td><td>4 с</td><td>время памяти</td></tr>
+<tr><td>R</td><td>0.2 м</td><td>максимальный вылет руки</td></tr>
+<tr><td>r_c</td><td>1.25 м</td><td>порог: дальше рука не реагирует</td></tr>
+<tr><td>γ</td><td>≈ 0.009 м/с</td><td>«сухое» затухание, γτ ≈ 3.6 см</td></tr>
+<tr><td>κ</td><td>на 1 м равновесие = 2R</td><td>сила отклика</td></tr>
+<tr><td>v</td><td>0.7 м/с</td><td>скорость зрителя, круг ≈ 9 с</td></tr>
+</table>
+<div style="position:absolute;left:1200px;top:280px;width:592px;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;line-height:1.0;color:#F2B252">15° → 74°</p><p style="font-size:24px;line-height:1.4;color:#B5AFA4">отставание руки от зрителя за круг</p></div>
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;line-height:1.0;color:#F2B252">≈ 5 с</p><p style="font-size:24px;line-height:1.4;color:#B5AFA4">рука ещё вытянута после того, как зритель вышел</p></div>
+<div style="display:flex;flex-direction:column;gap:6px"><p style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;line-height:1.0;color:#ECE8E1">≈ 7.5 с</p><p style="font-size:24px;line-height:1.4;color:#B5AFA4">от R до нуля без сигнала</p></div>
+</div>
+<div style="position:absolute;left:128px;top:780px;width:1664px;display:flex;gap:48px">
+<p style="flex:1;font-size:24px;line-height:1.45;color:#8E887E"><span style="color:#ECE8E1">Поворот.</span> При малых |p| направление p может меняться резко. Рука в этот момент почти спрятана, но платформе нужен запас скорости поворота.</p>
+<p style="flex:1;font-size:24px;line-height:1.45;color:#8E887E"><span style="color:#ECE8E1">Шум.</span> С малым λ сигнал очень чувствителен к расстоянию: положение зрителя с лидара стоит сглаживать.</p>
+</div>
+<aside>Это не финальные значения, а точка отсчёта для прототипа. Компромисс: чем больше τ, тем дольше рука «помнит», но тем слабее она реагирует на идущего зрителя; насыщение (κ) помогает держать амплитуду.</aside>
+</section>

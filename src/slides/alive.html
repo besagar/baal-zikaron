@@ -1,0 +1,26 @@
+<section id="alive" data-transition="fade" style="background:#111316;color:#ECE8E1;font-family:'IBM Plex Sans', Arial, sans-serif;padding:96px 128px;display:flex;flex-direction:column;gap:16px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;color:#F2B252;letter-spacing:2px;text-transform:uppercase">03 · Сценарий · шаг 1</p>
+<h2 style="font-family:'Cormorant Garamond', Georgia, serif;font-size:72px;font-weight:500;line-height:1.1;color:#ECE8E1">У входа: клетка жива</h2>
+<x-embed style="position:absolute;left:128px;top:270px;width:980px;height:640px"><!doctype html><html><head><meta charset="utf-8"></head><body style="margin:0;background:#0B0C0E;overflow:hidden"><canvas id="c" width="980" height="640"></canvas><script>
+var c=document.getElementById('c'),x=c.getContext('2d'),t0=performance.now();
+function n(t){return 0.5*Math.sin(t*2.1)+0.3*Math.sin(t*5.3+1)+0.2*Math.sin(t*11.7+2)}
+function f(){var t=(performance.now()-t0)/1000;x.fillStyle='#0B0C0E';x.fillRect(0,0,980,640);
+var g=x.createLinearGradient(0,0,0,470);g.addColorStop(0,'rgba(236,232,225,0.16)');g.addColorStop(1,'rgba(236,232,225,0.02)');x.fillStyle=g;x.beginPath();x.moveTo(470,0);x.lineTo(510,0);x.lineTo(700,430);x.lineTo(280,430);x.closePath();x.fill();
+x.fillStyle='#16181C';x.beginPath();x.ellipse(490,450,300,70,0,0,7);x.fill();x.fillStyle='#202329';x.beginPath();x.ellipse(490,440,300,66,0,0,7);x.fill();
+var k=0.62+0.22*n(t)+0.06*(Math.random()-0.5);var b=1+0.035*Math.sin(t*2*Math.PI/4.2);
+var r=x.createRadialGradient(490,410,10,490,410,260);r.addColorStop(0,'rgba(242,178,82,'+(0.55*k)+')');r.addColorStop(0.5,'rgba(242,178,82,'+(0.12*k)+')');r.addColorStop(1,'rgba(242,178,82,0)');x.fillStyle=r;x.fillRect(0,0,980,640);
+x.fillStyle='rgba(0,0,0,0.5)';x.beginPath();x.ellipse(490,440,150,22,0,0,7);x.fill();
+x.save();x.translate(490,436);x.scale(1,b);var m=x.createLinearGradient(0,-80,0,0);m.addColorStop(0,'#F4EFE6');m.addColorStop(1,'#B3AA9C');x.fillStyle=m;x.beginPath();x.moveTo(-150,0);x.bezierCurveTo(-150,-70,-80,-86,0,-86);x.bezierCurveTo(80,-86,150,-70,150,0);x.closePath();x.fill();
+var s=x.createRadialGradient(-10,-30,5,-10,-30,130);s.addColorStop(0,'rgba(255,213,138,'+(0.75*k)+')');s.addColorStop(1,'rgba(255,213,138,0)');x.fillStyle=s;x.beginPath();x.moveTo(-150,0);x.bezierCurveTo(-150,-70,-80,-86,0,-86);x.bezierCurveTo(80,-86,150,-70,150,0);x.closePath();x.fill();x.restore();
+x.fillStyle='#08090B';x.fillRect(0,0,150,640);x.fillRect(830,0,150,640);x.fillStyle='#1B1E23';x.fillRect(146,0,6,640);x.fillRect(828,0,6,640);
+requestAnimationFrame(f)}f();
+</script></body></html></x-embed>
+<div style="position:absolute;left:1150px;top:290px;width:642px;display:flex;flex-direction:column;gap:28px">
+<p style="font-size:32px;line-height:1.4;color:#ECE8E1">Внутри мешка мерцают светодиоды, слышны звуки жизни и дыхания.</p>
+<p style="font-size:24px;line-height:1.45;color:#8E887E">Эмбиент можно сделать генеративным: на данных реального роения нейтрофилов, с сэмплами дыхания и течения.</p>
+<p style="font-size:32px;line-height:1.4;color:#B5AFA4">Это последний кадр коридора: «тулово с рукой» как бы переместилось на стол.</p>
+<p style="font-family:'Cormorant Garamond', Georgia, serif;font-size:44px;line-height:1.2;color:#F2B252">У клетки есть память.</p>
+<p style="font-size:24px;line-height:1.45;color:#8E887E">Слева — набросок вида из проёма: мерцание изнутри и медленное «дыхание» мембраны.</p>
+</div>
+<aside>Анимация живая только в веб-версии; в PDF и PPTX остаётся один кадр. Важный приём: клетка видна через проём как продолжение куклы из коридора.</aside>
+</section>
