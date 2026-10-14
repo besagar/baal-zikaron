@@ -22,7 +22,7 @@ FIGS = {
                     cap='Ось времени: знать скорость в момент 4 — значит помнить положение в момент 3.'),
     'honey': dict(slide='honey', crop=(128, 280, 1664, 520), remove=[('top:860px', 'p')],
                   cap='Без инерции пространство состояний одномерно; с инерцией — двумерно, и пути «туда» и «обратно» могут различаться.'),
-    'wave': dict(slide='wave', crop=(128, 262, 1664, 700), remove=[],
+    'wave': dict(slide='wave', crop=(128, 262, 1664, 800), remove=[],
                  cap='Одиночная волна хемоаттрактанта проходит мимо нейтрофила. Внизу — смещение клетки к источнику во времени.'),
     'loops': dict(slide='loops', crop=(128, 280, 1664, 540), remove=[('top:830px', 'p')], cap='Петля как свидетель памяти.'),
     'plan': dict(slide='plan', crop=(128, 250, 1664, 780), remove=[],
@@ -325,8 +325,8 @@ TEMPLATE = '''<!doctype html>
 * {{ box-sizing:border-box; }}
 html {{ background:var(--bg); }}
 body {{ margin:0; background:var(--bg); color:var(--text); font:400 19px/1.65 'IBM Plex Sans', Arial, sans-serif; -webkit-font-smoothing:antialiased; }}
-main {{ max-width:760px; margin:0 auto; padding:0 16px 120px; }}
-header.top {{ max-width:1180px; margin:0 auto; padding:64px 16px 24px; display:grid; grid-template-columns:1fr minmax(0,560px); gap:32px; align-items:center; }}
+main {{ max-width:900px; margin:0 auto; padding:0 16px 120px; }}
+header.top {{ max-width:1100px; margin:0 auto; padding:64px 16px 24px; display:grid; grid-template-columns:1fr minmax(0,560px); gap:32px; align-items:center; }}
 header.top .eyebrow {{ font:500 14px/1.4 'IBM Plex Mono', monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--amber); margin:0 0 18px; }}
 header.top h1 {{ font:500 clamp(48px,7vw,96px)/1 'Cormorant Garamond', Georgia, serif; color:var(--ink); margin:0 0 16px; }}
 header.top h1 .he {{ font-family:'Frank Ruhl Libre', 'Times New Roman', serif; font-weight:500; display:block; text-align:left; }}
@@ -334,7 +334,7 @@ header.top h1 small {{ display:block; font:400 16px/1.4 'IBM Plex Mono', monospa
 .lede {{ color:var(--text); font-size:20px; margin:0 0 8px; }}
 .byline {{ font:400 15px/1.5 'IBM Plex Mono', monospace; color:var(--muted); }}
 header.top .fig {{ left:0; transform:none; width:100%; margin:0; }}
-nav.toc {{ max-width:760px; margin:8px auto 48px; padding:0 16px; }}
+nav.toc {{ max-width:900px; margin:8px auto 48px; padding:0 16px; }}
 nav.toc ol {{ list-style:none; padding:20px 24px; margin:0; background:var(--card); border-radius:14px; columns:2; column-gap:32px; }}
 nav.toc li {{ margin:4px 0; break-inside:avoid; }}
 nav.toc a {{ color:var(--text); text-decoration:none; border-bottom:1px solid var(--rule); }}
@@ -358,7 +358,7 @@ pre {{ background:var(--card); padding:16px; border-radius:10px; overflow-x:auto
 table {{ border-collapse:collapse; font-size:16px; line-height:1.5; min-width:640px; }}
 th, td {{ text-align:left; vertical-align:top; padding:10px 12px; border-bottom:1px solid var(--rule); }}
 th {{ color:var(--amber); font-weight:600; }}
-figure.fig {{ position:relative; left:50%; transform:translateX(-50%); width:min(1180px, calc(100vw - 32px)); margin:32px 0 40px; }}
+figure.fig {{ position:relative; left:50%; transform:translateX(-50%); width:min(1100px, calc(100vw - 32px)); margin:32px 0 40px; }}
 figure.fig .box {{ position:relative; overflow:hidden; border-radius:14px; }}
 figure.fig .stage {{ position:absolute; left:0; top:0; transform-origin:0 0; overflow:hidden; }}
 figure.fig .slide {{ font-size:16px; line-height:normal; }}
@@ -366,8 +366,8 @@ figure.fig .slide p, figure.fig .slide h3 {{ margin:0; }}
 figure.fig .slide table {{ min-width:0; border-collapse:collapse; }}
 figure.fig .slide th, figure.fig .slide td {{ padding:0.35em 0.6em; border-bottom:1px solid #2A2D33; }}
 figure.fig .slide ul {{ margin:0; }}
-figcaption {{ font-size:15px; line-height:1.5; color:var(--muted); margin:10px auto 0; max-width:760px; padding:0 4px; }}
-footer {{ max-width:760px; margin:0 auto; padding:24px 16px 64px; color:var(--muted); font-size:14px; border-top:1px solid var(--rule); }}
+figcaption {{ font-size:15px; line-height:1.5; color:var(--muted); margin:10px auto 0; max-width:900px; padding:0 4px; }}
+footer {{ max-width:900px; margin:0 auto; padding:24px 16px 64px; color:var(--muted); font-size:14px; border-top:1px solid var(--rule); }}
 @media (max-width:820px) {{
   header.top {{ grid-template-columns:1fr; padding-top:40px; }}
   nav.toc ol {{ columns:1; }}
