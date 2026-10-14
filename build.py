@@ -12,6 +12,7 @@ MD = os.path.join(ROOT, '..', 'concept.md')
 SLIDES = os.path.join(ROOT, 'src', 'slides')
 INTRO = os.path.join(ROOT, 'src', 'intro.html')
 OUT = os.path.join(ROOT, 'index.html')
+OUT_SLIDES = os.path.join(ROOT, 'slides.html')
 
 # ---------------------------------------------------------------- figures
 
@@ -80,14 +81,15 @@ def remove_el(s, sub, tag):
     return s[:start] + s[j:]
 
 
-def load_figure(key):
-    f = FIGS[key]
+def load_figure(key, f=None, keep_headings=False):
+    f = f or FIGS[key]
     src = open(os.path.join(SLIDES, f['slide'] + '.html'), encoding='utf-8').read()
     m = re.match(r'\s*<section[^>]*style="([^"]*)"[^>]*>(.*)</section>\s*$', src, re.S)
     style, inner = m.group(1), m.group(2)
     inner = re.sub(r'<aside>.*?</aside>', '', inner, flags=re.S)
-    inner = re.sub(r'<p style="[^"]*text-transform:uppercase[^"]*">.*?</p>', '', inner, count=1, flags=re.S)
-    inner = re.sub(r'<h2 .*?</h2>', '', inner, count=1, flags=re.S)
+    if not keep_headings:
+        inner = re.sub(r'<p style="[^"]*text-transform:uppercase[^"]*">.*?</p>', '', inner, count=1, flags=re.S)
+        inner = re.sub(r'<h2 .*?</h2>', '', inner, count=1, flags=re.S)
     for sub, tag in f['remove']:
         inner = remove_el(inner, sub, tag)
 
@@ -102,7 +104,7 @@ def load_figure(key):
     if key == 'signal':
         inner = inner.replace('width:700px;height:600px"', 'width:700px;height:600px;overflow:visible"', 1)
     x0, y0, w, h = f['crop']
-    cap = '<figcaption>%s</figcaption>' % f['cap'] if f['cap'] else ''
+    cap = '<figcaption>%s</figcaption>' % f['cap'] if f.get('cap') else ''
     return ('<figure class="fig" data-w="%d" data-h="%d" style="max-width:%dpx"><div class="box">'
             '<div class="stage" style="width:%dpx;height:%dpx">'
             '<div class="slide" style="%s;position:absolute;left:-%dpx;top:-%dpx;width:1920px;height:1080px;box-sizing:border-box">%s</div>'
@@ -388,7 +390,7 @@ footer {{ max-width:760px; margin:0 auto; padding:24px 16px 64px; color:var(--mu
 {intro}
 {body}
 </main>
-<footer>Черновик. Траектории и графики посчитаны по модели из раздела 4 с иллюстративными параметрами.</footer>
+<footer>Черновик. Траектории и графики посчитаны по модели из раздела 4 с иллюстративными параметрами. Та же концепция в виде слайдов: <a href="slides.html">slides.html</a>.</footer>
 <script>
 function fitFigs() {{
   document.querySelectorAll('figure.fig').forEach(function (f) {{
@@ -411,5 +413,75 @@ document.addEventListener('DOMContentLoaded', function () {{
 </html>
 '''
 
+ORDER = ['cover', 'inertia', 'honey', 'wave', 'loops', 'statement', 'plan', 'section', 'overview', 'corridor', 'alive',
+         'pass1', 'vestibule', 'pass2', 'receipt', 'simfull', 'signal', 'equation', 'decay', 'threshold', 'nomem', 'routes',
+         'params', 'mech', 'components', 'membrane', 'lidar', 'corridortech', 'room', 'light', 'theme', 'viewer', 'questions', 'next']
+
+
+def build_slides():
+    parts = []
+    for n, sid in enumerate(ORDER, 1):
+        fig = load_figure('s%d' % n, dict(slide=sid, crop=(0, 0, 1920, 1080), remove=[]), keep_headings=True)
+        parts.append('<div class="sl" id="%s">%s<p class="num">%d / %d</p></div>' % (sid, fig, n, len(ORDER)))
+    page = SLIDES_TEMPLATE.replace('{slides}', '\n'.join(parts))
+    open(OUT_SLIDES, 'w', encoding='utf-8').write(page)
+    print('written', OUT_SLIDES, '%.0f KB' % (len(page.encode()) / 1024))
+
+
+SLIDES_TEMPLATE = '''<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Baal Zikaron · слайды</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Frank+Ruhl+Libre:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap">
+<style>
+* { box-sizing:border-box; }
+html, body { margin:0; background:#08090B; color:#8E887E; font:14px/1.4 'IBM Plex Mono', monospace; }
+.bar { max-width:1600px; margin:0 auto; padding:20px 16px 4px; display:flex; justify-content:space-between; gap:16px; }
+.bar a { color:#F2B252; }
+.sl { max-width:1600px; margin:0 auto; padding:12px 16px 20px; }
+figure.fig { margin:0; }
+figure.fig .box { position:relative; overflow:hidden; border-radius:10px; box-shadow:0 10px 40px rgba(0,0,0,.5); }
+figure.fig .stage { position:absolute; left:0; top:0; transform-origin:0 0; overflow:hidden; }
+figure.fig .slide p, figure.fig .slide h1, figure.fig .slide h2, figure.fig .slide h3 { margin:0; }
+figure.fig .slide ul { margin:0; }
+figure.fig .slide table { border-collapse:collapse; }
+figure.fig .slide th, figure.fig .slide td { padding:0.35em 0.6em; border-bottom:1px solid #2A2D33; text-align:left; }
+.num { text-align:right; margin:6px 4px 0; }
+</style>
+</head>
+<body>
+<div class="bar"><span>Baal Zikaron · слайды · ← → или PgUp/PgDn</span><a href="./">связный текст</a></div>
+{slides}
+<script>
+function fitFigs() {
+  document.querySelectorAll('figure.fig').forEach(function (f) {
+    var w = +f.dataset.w, h = +f.dataset.h, box = f.querySelector('.box'), st = f.querySelector('.stage');
+    var s = box.clientWidth / w;
+    st.style.transform = 'scale(' + s + ')';
+    box.style.height = (h * s) + 'px';
+  });
+}
+window.addEventListener('resize', fitFigs);
+document.addEventListener('DOMContentLoaded', fitFigs);
+document.addEventListener('keydown', function (e) {
+  var d = {ArrowRight: 1, ArrowDown: 1, PageDown: 1, ' ': 1, ArrowLeft: -1, ArrowUp: -1, PageUp: -1}[e.key];
+  if (!d) return;
+  e.preventDefault();
+  var sl = Array.from(document.querySelectorAll('.sl')), y = window.scrollY + 10;
+  var i = sl.findIndex(function (s) { return s.offsetTop > y; });
+  i = i < 0 ? sl.length : i;
+  var t = d > 0 ? sl[i] : sl[Math.max(0, i - 2)];
+  if (t) window.scrollTo({top: t.offsetTop, behavior: 'smooth'});
+});
+</script>
+</body>
+</html>
+'''
+
 if __name__ == '__main__':
     build()
+    build_slides()
