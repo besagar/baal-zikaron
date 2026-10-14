@@ -279,7 +279,7 @@ def build():
         if kind == 'title':
             continue
         if kind == 'lede':
-            lede = h; continue
+            lede = h.replace(' Документ для совместной правки.', ''); continue
         if kind == 'code':
             body.append(load_figure('plan')); continue
         if kind == 'h2':
